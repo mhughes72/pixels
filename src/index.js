@@ -3,6 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
+
+
+// axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+
+axios.defaults.baseURL = "https://api.500px.com/v1/photos";
+
+// axios.defaults.params['feature'] = 'popular';
+// axios.defaults.params['consumer_key'] = 'P7LLhKkPAnPUpbfAXk3Jq2iDjYmCx87zgfEDxQVS';
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = true;
+axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['crossorigin'] = true;
+axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
+
+axios.interceptors.request.use(request => {
+    return request;
+}, error => {
+    return Promise.reject(error)
+});
+
+axios.interceptors.response.use(response => {
+    return response;
+}, error => {
+    return Promise.reject(error)
+})
 
 ReactDOM.render(
   <React.StrictMode>

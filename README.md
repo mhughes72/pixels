@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **500 Pixels REACT Photo Viewer**
 
-## Available Scripts
+## Versions/Commits
 
-In the project directory, you can run:
+## V. 0.1
+*Aug 30 2020*
+ - Skeleton REACT Project - ZERO functionality.
 
-### `npm start`
+## V. 0.5
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ Aug 31 2020
+ - Successful GET from 500px API utilizing proxy server (https://cors-anywhere.herokuapp.com/)
+ - Using Axion 3rd party for HTTP requests.  Not sure if it's necessary yet.  Will keep for now.
+ 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Task Brief
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Your solution will be assessed before an on-site interview. If you are invited for an interview, we’ll have some follow-up questions about why you designed and implemented your app the way you did, and ask questions about how your app might evolve in different situations.  
+  
+Task 1 - Photo Showcase  
+Create a simple web app to showcase Popular photos from 500px. Specifically, it should show photos in our “Popular” feature dynamically obtained from the 500px API. The list should support pagination, allowing users to browse through multiple pages of content. Feel free to choose exactly how you’d like to present the photos based on your own intuition.  
+  
+Task 2 - Photo Details  
+When user clicks on a photo on the grid, a full screen version of the photo should be displayed along with more detailed information about the photo, such as its title, description, and any other data you think might be useful to display.  
+  
+Task 3 - Cosmetics and Testing  
+This task is fairly open - further polish your web application and show off some of your strengths. Some ideas include:  
+Use your CSS talent to beautify your UI; improve the style, add animations, etc. Increase the reliability of your application by adding extensive test coverage  
+Feel free to choose the direction you want take (or even do both if you have extra cycles). Use this opportunity to show us what you’re good at in addition to coding.  
+  
+Use this API consumer key in your app: P7LLhKkPAnPUpbfAXk3Jq2iDjYmCx87zgfEDxQVS Please do NOT commit this key into public repo. Try to think of a way to import this key dynamically in local dev only.
