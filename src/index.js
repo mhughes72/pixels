@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-responsive-modal/styles.css';
 
 
 // axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";

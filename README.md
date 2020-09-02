@@ -12,6 +12,18 @@
  - Successful GET from 500px API utilizing proxy server (https://cors-anywhere.herokuapp.com/)
  - Using Axion 3rd party for HTTP requests.  Not sure if it's necessary yet.  Will keep for now.
  
+## V. 0.76
+
+Sept 2 2020
+- Added Modal for main photo display
+- Tried Bootstrap for React (buggy as hell, drove me mental)
+- Tried Material Design for React, WAY too fat for this purpose.
+- Settled on react-responsive-modal, nice and small and simple.  Styling could be better...
+
+
+## Final Plugin List
+- react-responsive-modal
+- react-spinners
 
 
 ## Task Brief
