@@ -20,10 +20,17 @@ Sept 2 2020
 - Tried Material Design for React, WAY too fat for this purpose.
 - Settled on react-responsive-modal, nice and small and simple.  Styling could be better...
 
+## V. 0.98
+
+Sept 4 2020
+- Styled the pic list aiming for a Masonry display.  Tried a couple things, settled on react-masonry-css, seems to be a pretty decent plugin.
+- NO pagination yet...
+
 
 ## Final Plugin List
 - react-responsive-modal
 - react-spinners
+- react-masonry-css
 
 
 ## Task Brief

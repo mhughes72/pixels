@@ -1,6 +1,7 @@
 .Photo-small {
 
-    width: 50px;
-    height: 50px;
+    width: 600px;
+    cursor: pointer;
+    /* height: 300px; */
     
 }

@@ -3,11 +3,21 @@ import axios from 'axios';
 import Photos from './Photos/Photos';
 import Photo from './Photo/Photo'
 import ClipLoader from "react-spinners/ClipLoader";
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import './App.css';
+import Masonry from 'react-masonry-css'
 
 
 
 class App extends Component {
 
+  breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1
+  };
 
   json = (response) => {
     return response.json()
@@ -36,7 +46,7 @@ class App extends Component {
     this.setState({ open: !this.state.open });
   };
 
-  
+
   // getPhotoHandler(id) {
 
   //   const uri = 'https://cors-anywhere.herokuapp.com/https://api.500px.com/v1/photos?feature=popular&consumer_key=P7LLhKkPAnPUpbfAXk3Jq2iDjYmCx87zgfEDxQVS'
@@ -66,7 +76,7 @@ class App extends Component {
     axios.get(uri)
       .then(response => {
 
-        const photos = response.data.photos.slice(0, 4);
+        const photos = response.data.photos.slice(0, 100);
         const updatedPhotos = photos.map(
           photo => {
             return {
@@ -100,6 +110,7 @@ class App extends Component {
             name={photo.name}
             showHide={this.state.showHide}
           />
+
         }
       );
     }
@@ -108,28 +119,51 @@ class App extends Component {
     return (
 
 
-      <div>
 
-        <div>
-          <Photo
-            open={this.state.open}
-            toggle={this.toggleModal}
-            selectedPhotoId={this.state.selectedPhotoId}
-            url={this.state.selectedPhotoURL}
-          >
+      <div >
 
-          </Photo>
-          <div className="sweet-loading">
-            <ClipLoader
-              // css={override}
-              size={150}
-              color={"#123abc"}
-              loading={this.state.isLoading}
-            />
-          </div>
+        {/* This is the invisible modal you fucking idiot */}
+        <Photo
+          open={this.state.open}
+          toggle={this.toggleModal}
+          selectedPhotoId={this.state.selectedPhotoId}
+          url={this.state.selectedPhotoURL}
+        >
+        </Photo>
+        {/* This is the invisible modal you fucking idiot */}
+
+
+        <div className="sweet-loading">
+          <ClipLoader
+            // css={override}
+            size={150}
+            color={"#123abc"}
+            loading={this.state.isLoading}
+          />
+        </div>
+        <div class="masonry">
+       
           {photos}
         </div>
+
+
+
+
+
+
+
       </div>
+
+
+
+
+
+
+
+
+
+
+
 
     )
 

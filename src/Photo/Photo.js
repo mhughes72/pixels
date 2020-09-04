@@ -1,6 +1,6 @@
 
 import React from 'react';
-import classes from './Photo.css';
+import './Photo.css';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import styled from 'styled-components';
@@ -15,11 +15,14 @@ const photo = (props) => (
     <Modal 
     open={props.open} 
     onClose={props.toggle} 
-
+    classNames={{ overlay: { background: 'green' } }}
       
     center
     >
-        <img src={props.url} alt={props.name} className={classes.Person}></img>
+        <img src={props.url} 
+        alt={props.name}
+        className="Photos"
+        ></img>
         <h2>Simple centered modal</h2>
         <h1>ID: {props.selectedPhotoId}</h1>
         <h1>URL: {props.url}</h1>
