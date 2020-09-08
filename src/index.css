@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(13, 32, 9, 0.25),
+    rgba(40, 180, 133, 0.25) 
+  );
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Nice Green
+background-image: linear-gradient(
+  to right bottom,
+  rgba(13, 32, 9, 0.25),
+  rgba(40, 180, 133, 0.25) */
+
+/* candy floss
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(248, 4, 4, 0.25),
+    rgba(40, 180, 133, 0.25)
+  );
+   */
+
+
+
+
+
+
+   

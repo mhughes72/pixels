@@ -1,26 +1,72 @@
-import React from 'react';
-import './Photos.css';
-import GridListTile from '@material-ui/core/GridListTile';
+import React, { Component } from 'react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import './Photos.css'
 
 
+class Photos extends Component {
 
-const photos = (props) => (
-    <div class="grid" onClick={props.clicked}>
+    constructor(props) {
+        super();
 
-        <div class="relative">
+    }
 
-            <img src={props.url} alt={props.name} className="Photo-small"></img>
-            {/* <h1>{props.title}</h1> */}
+    state = {
+        open: false
+
+    }
+
+    onOpenModal = () => {
+        console.log('CLICK 1')
+        this.setState({ open: true });
+    };
+
+    onCloseModal = () => {
+        console.log('CLICK 2')
+        this.setState({ open: false });
+    };
 
 
+    render() {
 
-            {/* <div className="Info">
-            <div className="Author">{props.url}</div>
-        </div> */}
-        </div>
-    </div>
+        return (
+            <div>
+                <div>
+                    <Modal
+                        open={this.state.open}
+                        onClose={this.onCloseModal}
+                        center
+                        showCloseIcon={false}
+                        container={this.props.domEle.innerHTML}
+                        styles={{
+                            overlay: {
+                                // 'background-color': 'blue',
+
+                            },
+                            modal: {
+                                'top': '5',
+                                'bottom': '5',
+                                'background-color': 'grey',
+
+                            },
+                        }}
+                    >
+                        <img src={this.props.selectedPhotoURL} alt={this.props.name} class="photo__big"></img>
+                        {/* <p>This is the Title</p> */}
+                        <p class="title">{this.props.name}</p>
+                        <p class="artist">{this.props.author}</p>
+                        <p class="copyright">The Copyright</p>
+                    </Modal>
+                </div>
+                <div class="grid photo" onClick={this.onOpenModal}>
+                    <img src={this.props.selectedPhotoURL} alt={this.props.name}></img>
+
+                </div>
+            </div>
+        )
+    }
+
+}
 
 
-)
-
-export default photos;
+export default Photos;

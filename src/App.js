@@ -1,27 +1,14 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Photos from './Photos/Photos';
-import Photo from './Photo/Photo'
 import ClipLoader from "react-spinners/ClipLoader";
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 import './App.css';
-import Masonry from 'react-masonry-css'
+import Pagination from "react-js-pagination";
+
 
 
 
 class App extends Component {
-
-  breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1
-  };
-
-  json = (response) => {
-    return response.json()
-  }
 
 
   state = {
@@ -29,46 +16,15 @@ class App extends Component {
     selectedPhotoId: null,
     selectedPhotoURL: null,
     error: false,
-    open: false,
     isLoading: false,
+    activePage: 1,
+    numResultsPerPage: 10,
+    numResults: 0,
+    currPageRange: [0, 9],
+    open: false
+
 
   }
-
-  photosSelectedHandler = (id, url) => {
-    this.toggleModal();
-    this.setState({ selectedPhotoId: id });
-    this.setState({ selectedPhotoURL: url });
-    console.log('ID: ', id, url)
-    // this.getPhotoHandler(id)
-  }
-
-  toggleModal = () => {
-    this.setState({ open: !this.state.open });
-  };
-
-
-  // getPhotoHandler(id) {
-
-  //   const uri = 'https://cors-anywhere.herokuapp.com/https://api.500px.com/v1/photos?feature=popular&consumer_key=P7LLhKkPAnPUpbfAXk3Jq2iDjYmCx87zgfEDxQVS'
-  //   axios.get(uri)
-  //     .then(response => {
-
-  //       const photos = response.data.photos.slice(0, 4);
-  //       const updatedPhotos = photos.map(
-  //         photo => {
-  //           return {
-  //             ...photo
-  //           }
-  //         }
-  //       )
-  //       this.setState({ photos: updatedPhotos })
-
-  //     })
-  //     .catch((error) => {
-  //       this.setState({ error: true })
-  //     })
-
-  // }
 
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -76,7 +32,7 @@ class App extends Component {
     axios.get(uri)
       .then(response => {
 
-        const photos = response.data.photos.slice(0, 100);
+        const photos = response.data.photos.slice();
         const updatedPhotos = photos.map(
           photo => {
             return {
@@ -86,6 +42,8 @@ class App extends Component {
         )
         this.setState({ photos: updatedPhotos })
         this.setState({ isLoading: false });
+        this.setState({ numResults: photos.length })
+
       })
       .catch((error) => {
         this.setState({ error: true })
@@ -93,7 +51,22 @@ class App extends Component {
 
   }
 
+  handlePageChange(pageNumber) {
 
+    this.setState({ activePage: pageNumber });
+    let firstPage = (pageNumber - 1) * this.state.numResultsPerPage;
+    let lastPage = (pageNumber - 1) * this.state.numResultsPerPage + this.state.numResultsPerPage;
+    this.setState({ currPageRange: [firstPage, lastPage] })
+
+  }
+
+  toggleBox() {
+    const { opened } = this.state;
+    this.setState({
+      opened: !opened,
+    });
+  }
+ 
   render() {
 
 
@@ -103,12 +76,13 @@ class App extends Component {
         (photo) => {
 
           return <Photos
-            clicked={() => this.photosSelectedHandler(photo.id, photo.image_url[0])}
+            // clicked={() => this.setToggler(photo.image_url[0])}
+            toggler={this.state.toggler}
             key={photo.id}
-            url={photo.image_url[0]}
+            selectedPhotoURL={photo.image_url[0]}
             author={photo.description}
             name={photo.name}
-            showHide={this.state.showHide}
+            domEle="<div>MATT HUGHES</div>"
           />
 
         }
@@ -119,57 +93,33 @@ class App extends Component {
     return (
 
 
+      <div>
 
-      <div >
-
-        {/* This is the invisible modal you fucking idiot */}
-        <Photo
-          open={this.state.open}
-          toggle={this.toggleModal}
-          selectedPhotoId={this.state.selectedPhotoId}
-          url={this.state.selectedPhotoURL}
-        >
-        </Photo>
-        {/* This is the invisible modal you fucking idiot */}
-
+        <div>
+          <Pagination
+            activePage={this.state.activePage}
+            itemsCountPerPage={this.state.numResultsPerPage}
+            totalItemsCount={this.state.numResults}
+            pageRangeDisplayed={Math.ceil(this.state.numResults / this.state.numResultsPerPage)}
+            onChange={this.handlePageChange.bind(this)}
+          />
+        </div>
 
         <div className="sweet-loading">
           <ClipLoader
-            // css={override}
             size={150}
             color={"#123abc"}
             loading={this.state.isLoading}
           />
         </div>
         <div class="masonry">
-       
-          {photos}
+          <div class="grid"></div>
+          {photos.slice(this.state.currPageRange[0], this.state.currPageRange[1])}
         </div>
-
-
-
-
-
-
-
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
     )
-
-
   }
 }
-
-
 export default App;
+
