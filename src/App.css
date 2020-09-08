@@ -37,7 +37,6 @@
   }
 }
 
-
 .box {
   flex-shrink: 3;
   /* align-items: flex-start; */
@@ -46,8 +45,6 @@
   flex-direction: row;
   font-size: 60px;
 }
-
-
 
 .masonry {
   columns: 4;
@@ -70,7 +67,7 @@
 }
 .masonry .grid:before {
   border-radius: 5px;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -121,5 +118,11 @@
   margin-top: auto;
 }
 
+.pagination_ {
+  text-align: center;
+  margin-left: 10px;
+  width: 100%;
+  /* display: inline; */
+}
 
 

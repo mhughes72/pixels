@@ -26,6 +26,13 @@ Sept 4 2020
 - Styled the pic list aiming for a Masonry display.  Tried a couple things, settled on react-masonry-css, seems to be a pretty decent plugin.
 - NO pagination yet...
 
+## V. 2.0
+
+Sept 8 2020
+- polished up styling, hovers, color, etc...
+- added env file containing consumer key
+- final build, test, build and re-test.
+
 
 ## Final Plugin List
 - react-responsive-modal

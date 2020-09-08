@@ -8,27 +8,25 @@ class Photos extends Component {
 
     constructor(props) {
         super();
-
     }
 
     state = {
         open: false
-
     }
 
     onOpenModal = () => {
-        console.log('CLICK 1')
         this.setState({ open: true });
     };
 
     onCloseModal = () => {
-        console.log('CLICK 2')
         this.setState({ open: false });
     };
 
+    onStringConcat = (str, len) => {
+        return str.length > len ? str.substring(0, len - 3) + "..." : str;
+    }
 
     render() {
-
         return (
             <div>
                 <div>
@@ -39,34 +37,26 @@ class Photos extends Component {
                         showCloseIcon={false}
                         container={this.props.domEle.innerHTML}
                         styles={{
-                            overlay: {
-                                // 'background-color': 'blue',
-
-                            },
                             modal: {
                                 'top': '5',
                                 'bottom': '5',
                                 'background-color': 'grey',
-
                             },
                         }}
                     >
                         <img src={this.props.selectedPhotoURL} alt={this.props.name} class="photo__big"></img>
-                        {/* <p>This is the Title</p> */}
                         <p class="title">{this.props.name}</p>
                         <p class="artist">{this.props.author}</p>
-                        <p class="copyright">The Copyright</p>
+                        <p class="description">
+                            {this.onStringConcat(this.props.description, 60)}</p>
                     </Modal>
                 </div>
                 <div class="grid photo" onClick={this.onOpenModal}>
                     <img src={this.props.selectedPhotoURL} alt={this.props.name}></img>
-
                 </div>
             </div>
         )
     }
-
 }
-
 
 export default Photos;
